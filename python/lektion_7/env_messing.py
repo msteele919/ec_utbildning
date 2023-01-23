@@ -17,4 +17,4 @@ rm -rf venv # delete the venv *****watch out! I did this once and accidently del
 
 """
 
-import numpy as np
+import requests 
