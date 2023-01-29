@@ -40,23 +40,31 @@ def validering(a):
         input_retry_b = check_tuple_digit(input_retry_a)
         if input_retry_b == True:
             break
-        return input_retry_b
+        return input_retry_a # return the final validated input
 def validated(a, b, c):
+    """
+    validated(check_tuple_digit, användarens_input, validation= validering)
+    Ska ta in 
+    """
     if a == True:
         return b
     elif a == False:
-        return c
+        return c(a) # call the function and return final validated input 
     
-            
-
-
+## turn input into two integers ## 
 
 # #Main funktionen returnera och skrivas ut alla resultat från de andra 
 # # funktioner 
-def main_function(a):
+def main_function():
+    """
+    
+    """
     print("Miniräknare")
-    print(a)
-    return ""
+    validated_input = validated(check_tuple_digit(användarens_input()), användarens_input(), validering)
+    # validated_input = validated(check_tuple_digit(användarens_input()), användarens_input(), validering)
+    print( validated_input)
+    resultat = addering(validated_input)
+    return resultat 
 
 
 
@@ -65,16 +73,17 @@ def main_function(a):
 ##*****************************##
 
 
-usr_num_tuple=användarens_input()
+# usr_num_tuple=användarens_input()
 
 
-time_to_validate = check_tuple_digit(usr_num_tuple)
+# time_to_validate = check_tuple_digit(usr_num_tuple)
 
-validation = validering(time_to_validate)
+# validation = validering(time_to_validate)
 
-users_validated_value= validated(check_tuple_digit, användarens_input, validation)
+# users_validated_value= validated(check_tuple_digit, användarens_input, validation)
 
-print(users_validated_value)
+# print(users_validated_value)
+print(main_function())
 #final_result = main_function(addering(validation))
 
 # print(final_result)
