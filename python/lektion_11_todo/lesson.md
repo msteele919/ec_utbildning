@@ -27,6 +27,7 @@
 - visa alla todos
 - visa en todo
 - avsluta programmet
+
 ## steg 4: Spara data in memory
 ## steg 5: Spara i sqlite
 ## steg 6: Byt till mssql
