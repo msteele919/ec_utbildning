@@ -2,20 +2,16 @@ from typing import List
 from fastapi import FastAPI 
 from pydantic import BaseModel
 
-from db import DB 
-
 class Todo(BaseModel): #data class. You don't have to do an init method. 
     id: int = None
     title: str
     descript: str
 
 app = FastAPI()
-db = DB ("todo.db")
 app.curr_id = 1
 
 # app["todos"] : List[Todo]
-# app.todos : List[Todo] = []
-
+app.todos : List[Todo] = []
 
 @app.get("/") # @ är en dekorator- den ändra beteendet på nästa funktion 
 def root(): 
@@ -23,18 +19,7 @@ def root():
 
 @app.get("/todos")
 def get_todos():
-    get_todo_query = """
-    SELECT * FROM todo
-    """
-    data= db.call_db(get_todo_query)
-    todos = []
-    for element in data:
-        id, title, descript = element
-        todos.append(Todo( id=id, title=title, descript = descript))
-        pass
-    print(data)
-    # return app.todos 
-    return todos
+    return app.todos 
 
 @app.get("/todo/{id}")
 def get_todo(id: int):
@@ -42,15 +27,10 @@ def get_todo(id: int):
 
 @app.post("/add_todo")
 def add_todo(todo: Todo):
-    insert_query = """
-    INSERT INTO todo (title, descript)
-    VALUES (?, ?)
-    """
-    # print(todo)
-    # todo.id = app.curr_id
-    # app.todos.append(todo)
-    # app.curr_id += 1 
-    db.call_db(insert_query, todo.title, todo.descript)
+    print(todo)
+    todo.id = app.curr_id
+    app.todos.append(todo)
+    app.curr_id += 1 
     return "adds a task"
 
 @app.delete("/delete_todo/{id}")
