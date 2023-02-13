@@ -1,3 +1,5 @@
+# kan hjälpa att titta på "seeda database med mac": https://academediase.sharepoint.com/:v:/s/DataScientist22-SolnaGteborg/EYksY_lcYApCm4g_ix0DxE8BSD71tS5B12QhV4PoIZT_uQ?e=SGJcYe
+
 
 import pyodbc
 # bröjar med server. kolla inom azure data studio 
