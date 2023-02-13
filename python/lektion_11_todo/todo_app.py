@@ -47,11 +47,11 @@ def delete_todo():
         print("Ids are not integers")
         return
     res = requests.delete(url(f"/delete_todo/{todo_to_delete}"))
-    print(res.json())
+    print(res)
     
 
 def update_todo(todos: List[Todo]):
-    print("update todo")
+    print("update todo", todos)
     
     todo_to_update= input("Id of todo you wish to update: ")
     if not str.isdigit(todo_to_update):
@@ -71,7 +71,7 @@ def update_todo(todos: List[Todo]):
 
     title = input("Todo title (leave blank if same ): ")
     descript = input("Todo description ( leave blank if same): ") 
-
+    
     if not title: 
         title = todo.title 
     if not descript: 
@@ -79,7 +79,7 @@ def update_todo(todos: List[Todo]):
 
     new_todo  = Todo(title = title, descript = descript)
     res = requests.put(url(f"/update_todo/{todo_to_update}"), json = new_todo.dict())
-    print(res.json())
+    print(res)
    
 
 def main():
