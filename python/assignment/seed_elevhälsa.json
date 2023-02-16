@@ -62,17 +62,6 @@
             "medicin": "null", 
             "nytidskapad": "True"
             
-        },
-        {
-           
-            "datum": "2019/03/114",
-            "student_personnummer":"123412341237",
-            "specialist": "steverssonstev",
-            "prognos":1,
-            "anteckningar": "Timmy kom in. Och det se ut som han har ADHD. Få återkomma nästa vecka för medicin",
-            "medicin": "null", 
-            "nytidskapad": "True"
-            
         },   
         {
            
@@ -82,6 +71,17 @@
             "prognos":2,
             "anteckningar": "Petey verkar har stor sorg. Planera att se honom 10 gånger under året.",
             "medicin": "null", 
+            "nytidskapad": "True"
+            
+        },
+        {
+           
+            "datum": "2019/03/11",
+            "student_personnummer":"123412341237",
+            "specialist": "steverssonstev",
+            "prognos":1,
+            "anteckningar": "Timmy kom in. Och gav honom recept för Ritlin. Få se honom nästa vecka och se hur medicin påverka sin studier och känslor",
+            "medicin": "Ritlin", 
             "nytidskapad": "True"
             
         }

@@ -48,8 +48,8 @@ def get_journaler():
     data = db.call_db(get_journaler_query)
     journalerna= []
     for element in data: 
-        datum, student_personnummer, specialist, prognos, anteckningar, medicin, nytidskapad = element
-        journalerna.append(Journaler(datum= datum, student_personnummer=student_personnummer, 
+        journal_id, datum, student_personnummer, specialist, prognos, anteckningar, medicin, nytidskapad = element
+        journalerna.append(Journaler(journal_id= journal_id,datum= datum, student_personnummer=student_personnummer, 
                                      specialist=specialist , prognos=prognos, anteckningar=anteckningar, medicin=medicin, 
                                      nytidskapad=nytidskapad))
     print(data)
@@ -62,7 +62,7 @@ def get_journal(journal_id: int):
 def add_journal(journal: Journaler):
     insert_query= """
     INSERT INTO journaler (datum, student_personnummer, specialist, prognos, anteckningar, medicin, nytidskapad)
-    VALUES ( ?, ?, ?, ?, ?, ?, ? )
+    VALUES ( ?, ?, ?, ?, ?, ?, ?)
     """
     db.call_db(insert_query, journal.datum, journal.student_personnummer, journal.specialist, journal.prognos, journal.anteckningar,
                 journal.medicin, journal.nytidskapad)

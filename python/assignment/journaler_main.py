@@ -26,6 +26,7 @@ def print_menu():
     5. Lämna verktyget
     """
     )
+    pass 
     
 def add_journal():
     print("Lägga till en journal")
@@ -42,7 +43,7 @@ def add_journal():
     print(res)
 
 def hämta_journal(): 
-    jounraler = []
+    journaler = []
     print("Hämta alla journaler")
     res = requests.get(url("/journaler"))
     if not res.status_code == 200: 
@@ -59,6 +60,8 @@ def hämta_journal():
         print(f"Anteckningar : {journal.anteckningar}")
         print(f"Elevs medicin : {journal.medicin}")
         print(f"Nytidskapad : {journal.nytidskapad}")
+        journaler.append(journal)
+    return journaler
 
 def uppdatera_journal(journalerna: List[Journaler]): 
     print("Uppdatera en elevs journal", journalerna)
@@ -80,7 +83,7 @@ def uppdatera_journal(journalerna: List[Journaler]):
     journal = journalerna[index]
 
     datum = input("Journal datum(lämna om det är samma): ")
-    student_personnummer = ("Elevs personnummer (lämna om det är samma): ")
+    student_personnummer = input("Elevs personnummer (lämna om det är samma): ")
     specialist = input("Specialistensid (lämna om det är samma): ")
     prognos = input("Prognos enligt regionenskatalog (siffrakod) (lämna om det är samma): ")
     anteckningar = input("Specialistens anteckningar (lämna om det är samma): ")
@@ -106,6 +109,8 @@ def uppdatera_journal(journalerna: List[Journaler]):
                            prognos= prognos , anteckningar= anteckningar , medicin= medicin , nytidskapad= nytidskapad)
     res = requests.put(url(f"/uppdatera_journal/{journal_att_uppdatera}"), json = ny_journal.dict())
     print(res.json())
+
+
 def radera_journal():
     ("Du har valt radera journal. Ange lösenord för att kunna göra detta:")
     lösnord= input()
@@ -118,11 +123,6 @@ def radera_journal():
         return 
     res = requests.delete(url(f"/delete_journal/{journal_att_radera}"))
     print(res.json())    
-    
-    
-    
-    
-    pass 
 
 
 def main(): 
