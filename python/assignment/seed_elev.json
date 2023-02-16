@@ -1,0 +1,39 @@
+{
+    "elever": [
+        {
+            "personnummer": "",
+            "efternam":"",
+            "förstanamn":"",
+            "ålder":"",
+            "grundskola": "" 
+            
+            
+        }
+    ],
+    "journaler": [
+        {
+           
+            "datum": "",
+            "personnummer":"",
+            "id_specialist ": "",
+            "prognos":"",
+            "anteckningar": "",
+            "medicin": "", 
+            "nytidskapad": ""
+            
+            
+        }
+    ],
+    "specialist": [
+        {
+            "id_specialist": "johanssonmik",
+            "efternamn":"",
+            "förstanamn":"",
+            "titel":"",
+            "specialisering": ""
+            
+            
+        }
+    ]
+
+}
