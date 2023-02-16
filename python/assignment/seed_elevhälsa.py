@@ -15,7 +15,7 @@ grundskola
 """
 
 create_journal = """
-INSERT INTO journal (
+INSERT INTO journaler (
 datum,
 student_personnummer,
 specialist,
@@ -46,9 +46,9 @@ with open("seed_elevhälsa.json", "r") as seed:
     for elev in data["elever"]:
         db.call_db(create_elev, elev["personnummer"], elev["efternamn"], elev["förstanamn"], elev["ålder"], elev["grundskola"])
 
-    for journal in data["journaler"]:
-        db.call_db(create_journal, journal["datum"], journal["student_personnummer"], journal["specialist"], journal["prognos"], 
-                   journal["anteckningar"], journal["medicin"], journal["nytidskapad"])
+    for journaler in data["journaler"]:
+        db.call_db(create_journal, journaler["datum"], journaler["student_personnummer"], journaler["specialist"], journaler["prognos"], 
+                   journaler["anteckningar"], journaler["medicin"], journaler["nytidskapad"])
 
     for specialist in data["specialister"]:
         db.call_db(create_specialist, specialist["id_specialist"], specialist["efternamn"], specialist["förstanamn"], specialist["titel"], specialist["specialisering"])

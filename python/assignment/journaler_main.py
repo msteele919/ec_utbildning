@@ -23,6 +23,7 @@ def print_menu():
     2. Hämta alla journaler
     3. Uppdatera en journal
     4. Radera en journal
+    5. Lämna verktyget
     """
     )
     
