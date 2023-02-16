@@ -38,9 +38,7 @@ app.journalerna: List[Journaler]= []
 
 @app.get("/")
 def root():
-    return """Hej och välkommen till elevhälsans journalsidan. 
-    Här kan du som specialist, rektor eller beslutsfattare
-    få tillgång till XXregions psykiskhälsajournaler"""
+    return "Hej och välkommen till elevhälsans journalsidan. Här kan du som specialist, rektor eller beslutsfattar få tillgång till XX regions psykiskhälsajournaler."
 
 @app.get("/journaler")
 def get_journaler():

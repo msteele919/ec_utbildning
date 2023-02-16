@@ -1,0 +1,120 @@
+{
+    "elever": [
+        {
+            "personnummer": "123412341234",
+            "efternam":"jones",
+            "förstanamn":"johhny",
+            "ålder": 8,
+            "grundskola": "Bergkristallsskolan" 
+        },
+        {
+            "personnummer": "123412341235",
+            "efternam":"timerson",
+            "förstanamn":"timmy",
+            "ålder": 9,
+            "grundskola": "Bergkristallsskolan" 
+        },
+        {
+            "personnummer": "123412341236",
+            "efternam":"gregerson",
+            "förstanamn":"greggy",
+            "ålder": 6,
+            "grundskola": "Bergkristallsskolan" 
+        },
+        {
+            "personnummer": "123412341237",
+            "efternam":"peterson",
+            "förstanamn":"petey",
+            "ålder": 10,
+            "grundskola": "Göteborgskolan" 
+        }
+    ],
+    "journaler": [
+        {
+           
+            "datum": "2019/03/09",
+            "personnummer":"123412341234",
+            "id_specialist ": "johanssonmik",
+            "prognos":1,
+            "anteckningar": "Johnny kännde sig bättre efter dagens tid. Han är frisk",
+            "medicin": "null", 
+            "nytidskapad": "False"
+            
+        },
+        {
+           
+            "datum": "2019/03/10",
+            "personnummer":"123412341234",
+            "id_specialist ": "johanssonmik",
+            "prognos":1,
+            "anteckningar": "Johnny kom tillbaka och kände sig inte bättre. Han är fortfarande sjuk.",
+            "medicin": "Ritlin", 
+            "nytidskapad": "True" 
+            
+        },
+        {
+           
+            "datum": "2019/03/10",
+            "personnummer":"123412341235",
+            "id_specialist ": "steverssonstev",
+            "prognos":1,
+            "anteckningar": "Timmy kom in. Och det se ut som han har ADHD. Få återkomma nästa vecka för medicin",
+            "medicin": "null", 
+            "nytidskapad": "True"
+            
+        },
+        {
+           
+            "datum": "2019/03/114",
+            "personnummer":"123412341237",
+            "id_specialist ": "steverssonstev",
+            "prognos":1,
+            "anteckningar": "Timmy kom in. Och det se ut som han har ADHD. Få återkomma nästa vecka för medicin",
+            "medicin": "null", 
+            "nytidskapad": "True"
+            
+        },   
+        {
+           
+            "datum": "2019/03/10",
+            "personnummer":"123412341235",
+            "id_specialist ": "jillsdotterjill",
+            "prognos":2,
+            "anteckningar": "Petey verkar har stor sorg. Planera att se honom 10 gånger under året.",
+            "medicin": "null", 
+            "nytidskapad": "True"
+            
+        },
+            
+    ],
+    "specialister": [
+        {
+            "id_specialist": "johanssonmik",
+            "efternamn":"johansson",
+            "förstanamn":"mik",
+            "titel":"psykiater",
+            "specialisering": "ADHD och betendeproblem"
+            
+            
+        },
+        {
+            "id_specialist": "steverssonstev",
+            "efternamn":"steversson",
+            "förstanamn":"stev",
+            "titel":"psykiater",
+            "specialisering": "barndomspyskologi"
+            
+            
+        },
+        {
+            "id_specialist": "jillsdotterjill",
+            "efternamn":"jillsdotter",
+            "förstanamn":"jill",
+            "titel":"psykologi",
+            "specialisering": "terapi, KBHD"
+            
+            
+        }
+    ]
+
+}
