@@ -12,9 +12,9 @@ class Elev(BaseModel):
     grundskola: str
 
 class Journaler(BaseModel):
-    journal_id: int
+    journal_id: int = None
     datum: str #assuming str eftersom den kommer innahålla '/' och sånt 
-    student_personnummer: int 
+    student_personnummer: str 
     specialist: str 
     prognos: int
     anteckningar: str 

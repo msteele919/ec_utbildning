@@ -31,7 +31,7 @@ def print_menu():
 def add_journal():
     print("Lägga till en journal")
     datum = input("Journal datum: ")
-    student_personnummer = ("Elevs personnummer: ")
+    student_personnummer = input("Elevs personnummer: ")
     specialist = input("Specialistensid: ")
     prognos = input("Prognos enligt regionenskatalog (siffrakod): ")
     anteckningar = input("Specialistens anteckningar: ")
@@ -112,9 +112,9 @@ def uppdatera_journal(journalerna: List[Journaler]):
 
 
 def radera_journal():
-    ("Du har valt radera journal. Ange lösenord för att kunna göra detta:")
+    print("Du har valt radera journal. Ange lösenord för att kunna göra detta:")
     lösnord= input()
-    if lösnord != 1234:
+    if lösnord !=1234:
         print("Lösenord är fel")
         return
     journal_att_radera = input("Journal Id av journal du vill radera: ")
