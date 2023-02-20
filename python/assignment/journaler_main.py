@@ -21,9 +21,10 @@ def print_menu():
         """
     1. Lägga till en journal
     2. Hämta alla journaler
-    3. Uppdatera en journal
-    4. Radera en journal
-    5. Lämna verktyget
+    3. Hämta en journal
+    4. Uppdatera en journal
+    5. Radera en journal
+    6. Lämna verktyget
     """
     )
     pass 
@@ -63,16 +64,29 @@ def hämta_journal():
         journaler.append(journal)
     return journaler
 
-def uppdatera_journal(journalerna: List[Journaler]): 
-    print("Uppdatera en elevs journal", journalerna)
-    journal_att_uppdatera = input("Journal ID av journalen som ska uppdateras: ")
+def hämta_en_journal():
+    # journal = []
+    print("hämta en journal")
+    journal_att_hämta = input("Ange journal ID från journal du vill ha: ")
+    if not str.isdigit(journal_att_hämta):
+        print("journal ID är en integer")
+        return 
+    res = requests.get(url(f"/journal/{journal_att_hämta}"))
+    if not res.status_code == 200: 
+        return
+    print(res.json())
+    
+
+def uppdatera_journal(journaler: List[Journaler]): 
+    print("Uppdatera en elevs journal", journaler)
+    journal_att_uppdatera = input("Journal ID av journalen som ska uppdateras: ").strip()
     if not str.isdigit(journal_att_uppdatera):
         print("journal ID är en integer")
         return 
     
     index= None 
-    for i, journal in enumerate(journalerna): 
-        print(journal.journal_id)
+    for i, journal in enumerate(journaler): 
+        # print(journal.journal_id)
         if journal.journal_id == int(journal_att_uppdatera): 
             index = i
             break 
@@ -80,7 +94,7 @@ def uppdatera_journal(journalerna: List[Journaler]):
     if index == None: 
         print("Ingen journal")
         return
-    journal = journalerna[index]
+    journal = journaler[index]
 
     datum = input("Journal datum(lämna om det är samma): ")
     student_personnummer = input("Elevs personnummer (lämna om det är samma): ")
@@ -105,15 +119,17 @@ def uppdatera_journal(journalerna: List[Journaler]):
     if not nytidskapad:
         nytidskapad = journal.nytidskapad
 
-    ny_journal = Journaler(datum=datum, student_personnummer= student_personnummer , specialist= specialist , 
-                           prognos= prognos , anteckningar= anteckningar , medicin= medicin , nytidskapad= nytidskapad)
-    res = requests.put(url(f"/uppdatera_journal/{journal_att_uppdatera}"), json = ny_journal.dict())
+    ny_journal = Journaler(datum=datum, student_personnummer= student_personnummer, specialist= specialist, 
+                           prognos= prognos, anteckningar= anteckningar, medicin= medicin, nytidskapad= nytidskapad)
+    res = requests.put(url(f"/update_journal/{journal_att_uppdatera}"), json = ny_journal.dict())
+    if not res.status_code == 200: 
+        return 
     print(res.json())
 
 
 def radera_journal():
-    print("Du har valt radera journal. Ange lösenord för att kunna göra detta:")
-    lösnord= input()
+    # print("Du har valt radera journal. Ange lösenord för att kunna göra detta:")
+    lösnord= int(input("Du har valt radera journal. Ange lösenord för att kunna göra detta:"))
     if lösnord !=1234:
         print("Lösenord är fel")
         return
@@ -122,6 +138,8 @@ def radera_journal():
         print("Ids är integer")
         return 
     res = requests.delete(url(f"/delete_journal/{journal_att_radera}"))
+    if not res.status_code == 200: 
+        return 
     print(res.json())    
 
 
@@ -137,13 +155,15 @@ def main():
         case 1: 
             add_journal()
         case 2: 
-            journalerna = hämta_journal()
-        case 3: 
-            journalerna = hämta_journal() 
-            uppdatera_journal(journalerna)
+            journalar = hämta_journal()
+        case 3:
+            hämta_en_journal()
         case 4: 
+            journalar = hämta_journal() 
+            uppdatera_journal(journalar)
+        case 5: 
             radera_journal()
-        case 5:
+        case 6:
             exit()
         case _:
             print("Välj ett av val i listan") 
