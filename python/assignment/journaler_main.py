@@ -1,6 +1,8 @@
 # from dotenv import load_dotenv 
 
 # load_dotenv() # didnt install. dont know if its necessary 
+from collections import Counter
+import csv 
 import os 
 from typing import List 
 import requests 
@@ -24,7 +26,8 @@ def print_menu():
     3. Hämta en journal
     4. Uppdatera en journal
     5. Radera en journal
-    6. Lämna verktyget
+    6. Skriv en csvfil med databasen
+    7. Lämna verktyget
     """
     )
     pass 
@@ -63,6 +66,23 @@ def hämta_journal():
         print(f"Nytidskapad : {journal.nytidskapad}")
         journaler.append(journal)
     return journaler
+
+def skriv_csv(journaler, filename):
+    with open(filename, 'w', newline='') as csvfile:
+        fieldnames = ['journal_id', 'datum', 'student_personnummer', 'specialist', 'prognos', 'anteckningar', 'medicin', 'nytidskapad']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        for journal in journaler:
+            writer.writerow({'journal_id': journal.journal_id,
+                             'datum': journal.datum,
+                             'student_personnummer': journal.student_personnummer,
+                             'specialist': journal.specialist,
+                             'prognos': journal.prognos,
+                             'anteckningar': journal.anteckningar,
+                             'medicin': journal.medicin,
+                             'nytidskapad': journal.nytidskapad})
+    
+    print(f"{filename} created sucessfully")
 
 def hämta_en_journal():
     # journal = []
@@ -143,6 +163,7 @@ def radera_journal():
     print(res.json())    
 
 
+
 def main(): 
     print_menu()
     val = input("Vad vill du göra?: ")
@@ -164,6 +185,9 @@ def main():
         case 5: 
             radera_journal()
         case 6:
+            journaler = hämta_journal()
+            skriv_csv(journaler, 'journaler.csv')
+        case 7:
             exit()
         case _:
             print("Välj ett av val i listan") 
