@@ -7,6 +7,7 @@ import os
 from typing import List 
 import requests 
 from api_1 import Journaler
+import pandas as pd
 
 DB_URL = os.getenv("DB_URL", "http://127.0.0.1:8000")
 
@@ -161,6 +162,10 @@ def radera_journal():
     if not res.status_code == 200: 
         return 
     print(res.json())    
+def write_csv(journaler):
+    journaler = journaler["items"]
+    journaler_df = pd.DataFrame(journaler)
+    return journaler_df.to_csv("csv.csv")
 
 
 
@@ -189,6 +194,9 @@ def main():
             skriv_csv(journaler, 'journaler.csv')
         case 7:
             exit()
+        case 8:
+            journaler = hämta_journal()
+            write_csv(journaler)
         case _:
             print("Välj ett av val i listan") 
 
